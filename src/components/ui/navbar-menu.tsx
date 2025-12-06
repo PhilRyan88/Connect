@@ -1,7 +1,10 @@
+"use client";
 import React from "react";
 import { motion } from "motion/react";
 
-const transition: any = {
+
+
+const transition:any = {
   type: "spring",
   mass: 0.5,
   damping: 11.5,
@@ -18,7 +21,7 @@ export const MenuItem = ({
 }: {
   setActive: (item: string) => void;
   active: string | null;
-  item: string | any;
+  item: string;
   children?: React.ReactNode;
 }) => {
   return (
@@ -67,8 +70,8 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="relative rounded-full border border-black/20 dark:bg-black dark:border-white/[0.2] bg-white shadow-input 
-      flex justify-center space-x-4 px-8 py-6 lg:w-1/4  "
+      className="relative rounded-full border border-black/20
+       dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex justify-center space-x-4 px-8 py-6 "
     >
       {children}
     </nav>
@@ -87,7 +90,7 @@ export const ProductItem = ({
   src: string;
 }) => {
   return (
-    <a href={href} className="flex space-x-8">
+    <a href={href} className="flex space-x-2">
       <img
         src={src}
         width={140}

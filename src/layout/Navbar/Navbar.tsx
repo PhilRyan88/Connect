@@ -1,62 +1,69 @@
-
-
 import { useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/navbar-menu";
+
+import { cn } from "../../lib/utils";
+import {
+  HoveredLink,
+  Menu,
+  MenuItem,
+  ProductItem,
+} from "../../components/ui/navbar-menu";
 import { ModeToggle } from "../../components/ui/custom/switch-mode/Toggle";
 
-const Navbar = () => {
+export default function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
-
   return (
-    <div className="w-full flex justify-center mt-2">
-      <Menu setActive={setActive} >
-        
-   
-
-        <MenuItem item="Company" active={active} setActive={setActive}>
-          <div className="flex flex-col space-y-2">
-            <HoveredLink href="/about">About Us</HoveredLink>
-            <HoveredLink href="/team">Our Team</HoveredLink>
-            <HoveredLink href="/careers">Careers</HoveredLink>
-           
+    <div
+      className={cn("fixed top-5 inset-x-0 max-w-2xl mx-auto z-50", className)}
+    >
+      <Menu setActive={setActive}>
+        <MenuItem setActive={setActive} active={active} item="Services">
+          <div className="flex flex-col space-y-4 text-sm">
+            <HoveredLink href="/web-dev">Web Development</HoveredLink>
+            <HoveredLink href="/interface-design">Interface Design</HoveredLink>
+            <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
+            <HoveredLink href="/branding">Branding</HoveredLink>
           </div>
         </MenuItem>
-
-             <MenuItem item="Products" active={active} setActive={setActive}>
-          <div className="grid grid-cols-1 gap-4">
-
+        <MenuItem setActive={setActive} active={active} item="Products">
+          <div className="  text-sm grid grid-cols-2 gap-10 p-4">
             <ProductItem
-              title="Tool"
-              description="Your personal Tool"
-              href="/product/ai"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrvUt_CMx9Wn4eLFv-s5WilU3BlZZ2Qkf2eA&s"
+              title="Algochurn"
+              href="https://algochurn.com"
+              src="https://assets.aceternity.com/demos/algochurn.webp"
+              description="Prepare for tech interviews like never before."
             />
             <ProductItem
-              title="Analytics"
-              description="Advanced insights"
-              href="/product/analytics"
-              src="https://w0.peakpx.com/wallpaper/274/901/HD-wallpaper-robot-technology.jpg"
+              title="Tailwind Master Kit"
+              href="https://tailwindmasterkit.com"
+              src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
+              description="Production ready Tailwind css components for your next project"
+            />
+            <ProductItem
+              title="Moonbeam"
+              href="https://gomoonbeam.com"
+              src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
+              description="Never write from scratch again. Go from idea to blog in minutes."
+            />
+            <ProductItem
+              title="Rogue"
+              href="https://userogue.com"
+              src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
+              description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
             />
           </div>
         </MenuItem>
-
-        <MenuItem item="Contact" active={active} setActive={setActive}>
-          <div className="flex flex-col space-y-2">
-            <HoveredLink href="/contact">Contact Form</HoveredLink>
-            <HoveredLink href="/support">Support</HoveredLink>
+        <MenuItem setActive={setActive} active={active} item="Pricing">
+          <div className="flex flex-col space-y-4 text-sm">
+            <HoveredLink href="/hobby">Hobby</HoveredLink>
+            <HoveredLink href="/individual">Individual</HoveredLink>
+            <HoveredLink href="/team">Team</HoveredLink>
+            <HoveredLink href="/enterprise">Enterprise</HoveredLink>
           </div>
         </MenuItem>
-   
-        <div className="flex items-center gap-5">
-              <ModeToggle/>
+        <div className="flex items-center gap-8">
+          <ModeToggle />
         </div>
-      
-       
-
-
       </Menu>
     </div>
   );
-};
-
-export default Navbar;
+}
